@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Data</title>
+    <script type="text/javascript">
+        function ShowDiv(myDiv){
+            document.getElementById(myDiv).style.display = "";
+            }
+        function ShowDiv2(arg1,arg2,arg3){
+            document.getElementById(arg1).style.display = "";
+            document.getElementById(arg2).style.display = "";
+            document.getElementById(arg3).style.display = "";
+            }
+    </script>
+</head>
+<body>
+    {% if msg %}
+        {{msg}}
+    {% endif %}
+    <input type="button" value="Get Data" onclick="ShowDiv('myDiv')" />
+    <input type="button" value="Edit Data" /> <!-- onclick="ShowDiv2('myDiv','uEdith','uEdit')" -->
+    <input type="button" value="Delete Data"/> <!-- onclick="ShowDiv2('myDiv','udeleth','udelet')" -->
+    <input type="button" value="Add User Manually"/><a href="/registration" type="button">Add User Manually</a>
+    <input type="button" value="Export data to Excel"/><a href="/showdata?data={{records}}" type="button">Export Data to Excel</a>
+
+    <div id="myDiv" style="display:none;">
+    <table  style="">
+         <thead>
+            <tr>
+               <th>Firstname</th>
+               <th>Lastname</th>
+               <th>Gender</th>
+               <th>Age</th>
+                <th>Skill</th>
+                <th>YearOfExp</th>
+                <th id="uEdith">Edit</th>
+                <th id="udeleteh">Delete</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for user in records %}
+               <tr>
+                  <td>{{ user.firstname }}</td>
+                  <td>{{ user.lastname }}</td>
+                  <td>{{ user.gender }}</td>
+                  <td>{{ user.age }}</td>
+                   <td>{{user.address }}</td>
+                   <td>{{user.skill }}</td>
+                   <td>{{user.yearofexp }}</td>
+                   <td id="uEdit"><a href="/edit?id={{user.id}}">EditUser</a> </td>
+                   <td id="udelete"><a href="/showdata?delid={{user.id}}">DeleteUser</a> </td>
+               </tr>
+            {% endfor %}
+         </tbody>
+    </table>
+    </div>
+</body>
+</html>

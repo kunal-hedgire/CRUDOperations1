@@ -1,0 +1,64 @@
+
+<html>
+<body>
+
+<div class="container">
+
+
+<form {% if edituser %} action="/edit" {% else %} action="/login" {% endif %} method="post">
+
+
+	<label>FirstName :</label>
+	<input type="text" name="firstname" id="fname" placeholder="Enter your firstName" value="{{ edituser[0].firstname if edituser }}"><br/><br/><br/>
+
+	<label>LastName :</label>
+	<input type="text" name="lastname" id="lname" placeholder="Enter your lastname" value="{{ edituser[0].lastname if edituser }}"><br/><br/><br/>
+
+	<label>Age :</label>
+	<input type="text" name="age" id="age" placeholder="Enter your age" value="{{ edituser[0].age if edituser }}"><br><br/><br/>
+
+	<label>Email Address :</label>
+	<input type="text" name="address" id="address" placeholder="Enter your Email adderss" value="{{ edituser[0].address if edituser }}"><br><br/><br/>
+
+	<label>Set Your Password :</label>
+	<input type="text" name="password" id="password" placeholder="Enter your password"><br><br/><br/>
+
+	<label>Gender :</label><br/>
+	<input type="radio" name="gender" id="gender1" value="M" {% if edituser %} {% if edituser[0].gender =="M" %}checked{% endif %}{% endif %}> Male <br><br/>
+	<input type="radio" name="gender" id="gender2" value="F" {% if edituser %} {% if edituser[0].gender =="F" %}checked{% endif %}{% endif %}> Female<br><br/>
+
+	<label>YearOfExp :</label><br/>
+	<select name="yearofexp">
+		<option {% if edituser %} {%if edituser[0].yearofexp ==1 %}selected{% endif %}{% endif %}>1</option>
+		<option {% if edituser %} {%if edituser[0].yearofexp ==2 %}selected{% endif %}{% endif %}>2</option>
+		<option {% if edituser %} {%if edituser[0].yearofexp ==3 %}selected{% endif %}{% endif %}>3</option>
+		<option {% if edituser %} {%if edituser[0].yearofexp ==4 %}selected{% endif %}{% endif %}>4</option>
+		<option {% if edituser %} {%if edituser[0].yearofexp ==5 %}selected{% endif %}{% endif %}>5</option>
+		<option {% if edituser %} {%if edituser[0].yearofexp ==6 %}selected{% endif %}{% endif %}>6</option>
+		<option {% if edituser %} {%if edituser[0].yearofexp ==7 %}selected{% endif %}{% endif %}>7</option>
+		<option {% if edituser %} {%if edituser[0].yearofexp ==8 %}selected{% endif %}{% endif %}>8</option>
+		<option {% if edituser %} {%if edituser[0].yearofexp ==9 %}selected{% endif %}{% endif %}>9</option>
+		<option {% if edituser %} {%if edituser[0].yearofexp ==10 %}selected{% endif %}{% endif %}>10</option>
+    </select>
+	<br><br><br>
+	<label>Skillset :</label><br/>
+	Java :<input type="checkbox" name="java" value="java" {% if edituser %} {% if edituser[0].java !=None %}checked{% endif %}{% endif %}/><br/>
+	Python :<input type="checkbox" name="python" value="python" /><br/>
+	Selenium :<input type="checkbox" name="selenium" value="selenium" /><br/>
+	Angular :<input type="checkbox" name="Angular" value="Angular" /><br/>
+	AWS :<input type="checkbox" name="AWS" value="AWS" /><br/>
+	Microservices :<input type="checkbox" name="Microservices" value="Microservices" /><br/><br/>
+
+    <input type="checkbox" style="display:none;" name="editid" id="editid" checked value="{{ edituser[0].id if edituser }}"/>
+
+	<br><br><br>
+
+	<input type="submit" value="submit" name="submit"></input>
+
+
+
+
+</form>
+</div>
+<body>
+<html>
